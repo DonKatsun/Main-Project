@@ -1,5 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+//<!DOCTYPE html><html lang="en"> trader_cdlupsidegap2crows
+include("conecta.php");
+?>
+
 
 <head>
     <meta charset="UTF-8">
@@ -11,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Nunito+Sans:ital@1&family=Poppins&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f9e8b427c6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/fullBecas.css">
-    <title>Todas las becas</title>
+    <link rel="stylesheet" href="./css/fullRecursos.css">
+    <title>Todos los recursos</title>
 </head>
 
 <body>
@@ -21,7 +24,7 @@
             <a class="navbar-brand" href="#">Logo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button> 
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="items-menu">
@@ -61,8 +64,8 @@
                     <i class="fas fa-search"></i>
                     <input type="text">
                 </div>
-                
-                
+
+
                 <select class="form-control">
                     <option>Default select</option>
                 </select>
@@ -70,45 +73,44 @@
         </section>
 
         <section class="titulos">
-            <h5 class="texto">¿Necesitas materiales, comida escolar o colegiaturas más accesibles?</h5>
-            <h5 class="texto">Pues adelante, échale un vistazo -lento- a</h5>
-            <h1 class="titulo">todas las becas</h1>
-            <h5 class="texto">y guarda tus prospectos usando un 🧡 </h5>
+            <h5 class="texto">Todo lo bueno cuesta y el esfuerzo se recompensa.</h5>
+            <h5 class="textos">Para llegar a darlo todo en el examen, aquí tienes algunos</h5>
+            <h1 class="titulo">recursos de estudio</h1>
+            <h5 class="texto">Guarda los que más te sirvan usando un 🧡 </h5>
         </section>
 
         <section class="cards">
             <div class="row">
                 <div class="col-12">
                     <div class="container cont-cards">
-                        <div class="row mt-3 justify-content-center">
+                         <div class="row mt-3 justify-content-center">
+                           <?php
+                           $sqld="SELECT * FROM herramienta;";
+                           if ($resultado = $mysqli->query($sqld)) {}
+                             $arreglomamon;$bandera=0;
+                             foreach ($resultado as $key) {
+                               $arreglomamon[$bandera]=$key;
 
-                            <div class="card mr-3 mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Lideres del mañana</h5>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <img class="card-img" src="/img/index/LogoLideresAzul.jpg" alt="">
-                                        </div>
-                                        <div class="col-6">
-                                            <p class="subtitle">La otorga:</p>
-                                            <div class="et-morada">Publica</div>
-                                            <p class='subtitle'>Durante:</p>
-                                            <div class="et-morada">Una carrera universitaria</div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 fechas-conv">
-                                            <p class="subtitle2">Inicio de convocatoria:</p>
-                                            <div class="inicio et-verde">23-05-2021</div>
-                                            <p class='subtitle2'>Fin de convocatoria:</p>
-                                            <div class="fin et-roja">20-06-2021</div>
-                                            <p class='subtitle2'>Monto:</p>
-                                            <div class="et-morada">Costo total de la colegiatura</div>
-                                        </div>
-                                    </div>
+                               echo'<div class="card mr-3 mb-3">
+                                   <div class="card-body">
+                                       <h5 class="card-title">'.$arreglomamon[$bandera]['nombre'].'</h5>
+                                       <div class="row">
+                                           <div class="col-6 img-cont">
+                                               <img class="card-img" src="'.$arreglomamon[$bandera]['logo'].'" alt="">
+                                           </div>
+                                           <div class="col-6">
+                                               <p class="subtitle">Impartido por:</p>
+                                               <div class="et-morada">'.$arreglomamon[$bandera]['impartidor'].'</div>
+                                               <p class="subtitle">Costo:</p>
+                                               <div class="et-morada">'.$arreglomamon[$bandera]['costo'].'</div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>';
 
-                                </div>
-                            </div>
+                               $bandera=$bandera+1;
+                             }
+                           ?>
 
                         </div>
                     </div>
